@@ -1,5 +1,5 @@
 import Queue from './queue.es6';
-// let stack = require('./stack');
+// var Queue = require('./queue');
 
 describe('Queue.prototype', () => {
   let queue = new Queue([1, 2, 3]);
@@ -27,12 +27,12 @@ describe('Queue.prototype', () => {
     expect(queue.size()).toEqual(3);
   });
 
-  it('clear를 사용하여 스택을 비운다.', () => {
+  it('clear를 사용하여 큐를 비운다.', () => {
     queue.clear();
     expect(queue.size()).toEqual(0);
   });
 
-  it('스택이 비어 있는지 확인한다.', () => {
+  it('큐가 비어 있는지 확인한다.', () => {
     expect(queue.isEmpty()).toEqual(true);
   });
 });
