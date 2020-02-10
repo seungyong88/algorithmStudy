@@ -9,7 +9,15 @@ Clone the repo and install the dependencies.
 ## 1주차 Stack
 
 ### Stack Test
-node ./01. Stack/initial/stack.es6.js or node ./01. Stack/initial/stack.js 
+node ./01. stack/initial/stack.es6.js or node ./01. stack/initial/stack.js 
 
 ### Stack jest test 
 npm run test:stack or yarn test:stack
+
+## 2주차 Queue
+
+### Queue Test
+node ./02. queue/initial/queue.es6.js or node ./01. queue/initial/queue.js 
+
+### Queue jest test 
+npm run test:queue or yarn test:queue
