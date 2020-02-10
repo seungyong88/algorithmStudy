@@ -12,4 +12,4 @@ Clone the repo and install the dependencies.
 node ./01. Stack/initial/stack.es6.js or node ./01. Stack/initial/stack.js 
 
 ### Stack jest test 
-npm run test: stack or yarn test:stack
+npm run test:stack or yarn test:stack
