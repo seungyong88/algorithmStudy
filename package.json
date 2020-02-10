@@ -1,0 +1,48 @@
+{
+  "name": "study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "test:stack": "jest 01. stack/GSY/stack.spec.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seungyong88/algorithmStudy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seungyong88/algorithmStudy/issues"
+  },
+  "homepage": "https://github.com/seungyong88/algorithmStudy#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3",
+    "@testing-library/dom": "^6.11.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "axios-mock-adapter": "^1.17.0",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^24.9.0",
+    "babel-preset-env": "^1.7.0",
+    "diffable-html": "^4.0.0",
+    "jest": "^24.9.0",
+    "jest-serializer-html": "^7.0.0",
+    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.4"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.19.1",
+    "core-js": "^3.6.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jquery": "^3.3.1"
+  }
+}

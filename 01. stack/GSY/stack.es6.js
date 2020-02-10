@@ -1,5 +1,5 @@
 //es6
-class Stack {
+export class Stack {
   constructor(arr = []){
     this._items = arr;
   }
