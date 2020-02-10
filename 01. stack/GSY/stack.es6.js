@@ -1,5 +1,5 @@
 //es6
-export class Stack {
+export default class Stack {
   constructor(arr = []){
     this._items = arr;
   }
@@ -29,16 +29,20 @@ export class Stack {
   }
 
   print(){
+    return this._items;
+  }  
+
+  printString(){
     console.log(this._items.toString());
   }
 }
 
-let stack = new Stack([1]);
-stack.push(2);
-stack.push(3);
-stack.print();
-stack.pop();
-stack.print();
-console.log(stack.size());
-stack.clear();
-console.log(stack.isEmpty());
+// let stack = new Stack([1]);
+// stack.push(2);
+// stack.push(3);
+// stack.print();
+// stack.pop();
+// stack.print();
+// console.log(stack.size());
+// stack.clear();
+// console.log(stack.isEmpty());
