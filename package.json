@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll",
-    "test:stack": "jest 01. stack/GSY/stack.spec.js --watch"
+    "test:stack": "jest 01. stack/GSY/stack.spec.js --watch",
+    "test:queue": "jest 02. queue/GSY/queue.spec.js --watch"
   },
   "repository": {
     "type": "git",
