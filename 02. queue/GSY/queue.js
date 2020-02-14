@@ -1,4 +1,5 @@
-export default function Queue(arr) {
+// export default function Queue(arr) {
+module.exports = function Queue(arr) {
   var _items = arr;
 
   this.enqueue = function(element) {

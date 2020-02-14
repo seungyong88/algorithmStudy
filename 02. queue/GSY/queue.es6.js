@@ -1,6 +1,7 @@
-export default class Queue {
+// export default class Queue {
+module.exports = class Queue {
   constructor(arr = []) {
-    this._items = arr; 
+    this._items = arr;
   }
 
   enqueue(...item) {
