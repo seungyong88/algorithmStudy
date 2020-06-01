@@ -74,13 +74,40 @@ class Graph {
         callback(u);
       }
 
-
       // console.log(color, neighbors);
     }
   }
 
   printNode(value) {
     console.log('탐색한 정점' + value);
+  }
+
+  dfs(callback) {
+    var color = this.initialzeColor();
+
+    for(var i =0; i<this.vertices.length; i++){
+      if(color[this.vertices[i]] === 'white'){
+          this.dfsVisit(this.vertices[i], color, callback)
+      }
+    }
+  }
+
+  dfsVisit(u, color, callback) {
+    color[u] = 'gray';
+
+    if(callback) {
+      callback(u);
+    }
+
+    var neighbors = this.adjList.get(u);
+    for(var i=0; i<neighbors.length; i++) {
+      var w = neighbors[i];
+      if(color[w] === 'white') {
+        this.dfsVisit(w, color, callback);
+      }
+    }
+
+    color[u] = 'black';
   }
 
 }
@@ -102,7 +129,8 @@ graph.addEdge('B', 'E');
 graph.addEdge('B', 'F');
 graph.addEdge('E', 'I');
 
-graph.bfs(myVertices[0], graph.printNode);
+// graph.bfs(myVertices[0], graph.printNode);
+graph.dfs(graph.printNode);
 
 // graph.showMap();
 // console.log(graph.toString());
