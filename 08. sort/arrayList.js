@@ -17,7 +17,6 @@ class ArrayList{
     var length = this.array.length;
 
     // 5 3 2 6 9 8 5 1 
-
     for(var i=0; i< length; i++) {
       for(var j=0; j< length-1; j++) { 
         var arr1 = this.array[j];
@@ -34,6 +33,58 @@ class ArrayList{
     this.array[index1] = this.array[index2];
     this.array[index2] = aux;
   }
+
+  quickSort() {
+    this.quick(this.array, 0, this.array.length-1);
+  }
+
+  quick(arr, left, right) {
+    var index; // {1}
+  
+    if(arr.length > 1) { // {2} // 빈 배열일 경우 return;
+      index = this.partition(arr, left, right); // {3}
+
+      if(left < index -1) { // {4}
+        this.quick(arr, left, index-1); // {5}
+      }
+
+      if(index < right) { // {6}
+        this.quick(arr, left, right); // {7}
+      }
+      
+    }
+  }
+
+
+  partition(array, left, right) {
+    let pivot = array[Math.floor((right + left) / 2)], // {8}
+    i = left, 
+    j = right;
+
+    while(i <= j) {
+      while(array[i] < pivot) {
+        i++;
+      }
+
+      while(array[j] > pivot) {
+        j--;
+      }
+
+      if(i <= j) {
+        this.swapQuickSort(array, i, j); // {15}
+        i++;
+        j--;
+      }
+    }
+
+    return i;
+  }
+
+  swapQuickSort(array, index1, index2) {
+    var aux = array[index1];
+    array[index1] = array[index2];
+    array[index2] = aux;
+  }
 }
 
 let arr = new ArrayList();
@@ -45,11 +96,6 @@ arr.insert(9);
 arr.insert(8);
 arr.insert(5);
 arr.insert(1);
-// arr.bubbleSort();
-
-// console.log(arr.toString());
-
-
 
 function createNonSortedArray(size){
   var array = new ArrayList();
@@ -61,6 +107,7 @@ function createNonSortedArray(size){
 }
 
 var array = createNonSortedArray(5);
-console.log(array.toString());
-array.bubbleSort();
-console.log(array.toString());
+// array.quickSort();
+// console.log(array.toString());
+// array.bubbleSort();
+// console.log(array.toString());
