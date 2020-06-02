@@ -9,7 +9,7 @@ function solution(number) {
       anwser[j] = null;
     }
   }
-1
+
   return anwser.filter(item => item !== null).length;
 }
 
