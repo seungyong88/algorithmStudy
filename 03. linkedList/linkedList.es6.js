@@ -1,127 +1,107 @@
 class Node {
-  constructor(element) {
-    this.element = element;
+  constructor(data) {
+    this.data = data;
     this.next = null;
   }
 }
 
 class LinkedList {
   constructor() {
-    this._head = null;
-    this._length = 0;
+    this.head = {next: null};
+    this.length = 0;
   }
 
-  append(element) {
-    var node = new Node(element), current;
+  append(data) {
+    var end = new Node(data);
+    var current = this.head;
 
-    if (this.isEmpty()) { // 비었으면
-      this._head = node; // 첫번째에 추가
+    if (this.isEmpty()) {
+      this.head.next = end;
     } else {
-      current = this._head;
-
-      while (current.next) {
+      while (current.next != null) {
         current = current.next;
       }
 
-      current.next = node;
+      current.next = end;
     }
 
-    this._length++;
+    this.length++;
   }
 
-  insert(position, element) {
-    var node = new Node(element), current = this._head, previous, index = 0;
+  delete(data) {
+    var current = this.head;
 
-    if (position > -1 && position < this._length) {
-      if (position === 0) {
-        this._head = node;
-        this._head.next = current;
+    while (current.next != null) {
+      if (current.next.data == data) {
+        current.next = current.next.next;
       } else {
-        while (index++ < position) {
-          previous = current;
-          current = current.next;
-        }
-
-        previous.next = node;
-        node.next = current;
-
+        current = current.next;
       }
-      this.length++;
-    
-    } else {
-      return false;
     }
   }
 
-  removeAt(position) {
-    var current = this._head;
-    var previous, current, index = 0;
-    if (position > -1 && position < this._length) {
-      this._length--;
-      if (position === 0) {
-        this._head = current.next;
-        return current.element;
-      } else {
-        while (index++ < position) {
-          previous = current;
-          current = current.next;
-        }
+  print() {
+    var current = this.head.next; 
+    var string = '';
 
-        previous.next = current.next;
-        return current.element;
+    if (this.isEmpty()) {
+      return;
+    } else {
+      while (current.next != null) {
+        string += current.data + " -> ";
+        current = current.next;
       }
-    } else {
-      return false;
+
+      console.log(string+current.data);
     }
-  }
-
-  remove(element) {
-    let current = this._head, index = 0;
-
-    while (current.next) {
-      if (current.element === element) { break; }
-      index++;
-      current = current.next;
-    }
-
-    this.removeAt(index);
-  }
-
-  toString() {
-    let current, string = '';
-    current = this._head;
-
-    for (let i = 0; i < this._length; i++) {
-      string += current.element + ', ';
-      current = current.next;
-    }
-
-    return string;
   }
 
   isEmpty() {
-    return this._length === 0;
+    return this.head.next === null;
   }
 
-  size() {
-    return this._length;
-  }
+  // removeDups() {
+  //   var current = this.head.next;
+    
+  //   while(current != null && current.next != null) {
+  //     var runner = current;
+  //     while(runner.next != null) {
+  //       if(current.data == runner.next.data) {
+  //         runner.next = runner.next.next;
+  //       }else{
+  //         runner = runner.next;
+  //       }
 
+  //     }
+  //     current = current.next;
+  //   }
+  // }
+
+
+
+  removeDups() {
+    var current = this.head.next;
+
+    while(current != null && current.next != null) {
+      var runner = current;
+      while(runner.next != null) {
+        if(current.data == runner.next.data) {
+          runner.next = runner.next.next;
+        }else{
+          runner= runner.next;
+        }
+
+      }
+      current = current.next;
+    }
+  }
 }
 
-let list = new LinkedList();
-
-list.append(11);
-list.append(12);
-list.append(13);
-
-console.log(list.removeAt(1));
-list.insert(1, 12);
-console.log(list.toString());
-list.remove(12);
-console.log(list.toString());
-console.log(list.removeAt(0));
-console.log(list.isEmpty());
-console.log(list.removeAt(0));
-console.log(list.size());
-console.log(list.isEmpty());
+var linkedList = new LinkedList();
+linkedList.append(0);
+linkedList.append(0);
+linkedList.print();
+linkedList.removeDups();
+linkedList.print();
+// linkedList.delete(0);
+// linkedList.print();

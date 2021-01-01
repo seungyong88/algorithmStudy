@@ -10,17 +10,41 @@ class LinkedList {
     this.head = null;
     this.length = 0;
   }
+  
+  isEmpty() {
+    return this.length === 0;
+  }
 
-  append(element) {
-    let node = new Node(element), current;
+  size() {
+    console.log(this.isEmpty());
+  }
+
+  toString () {
+    let string = '';
+    let current = this.head;
 
     if(this.isEmpty()) {
-      this.head = node;
-    } else {
-      current = this.head;
-
-      while(current.next) {
+      console.log('empty');
+    }else{
+      while(current.next != null) {
+        string += current.element+' -> ';
         current = current.next;
+      }
+  
+      console.log(string+current.element);
+    }
+    
+  }
+
+  append(element) {
+    let current = this.head;
+    let node = new Node(element);
+
+    if(this.isEmpty()){
+      this.head = node;
+    }else {
+      while(current.next != null) {
+        current = current.next
       }
 
       current.next = node;
@@ -29,47 +53,29 @@ class LinkedList {
     this.length++;
   }
 
-  insert(position, element) {
-    var node = new Node(element);
-    var current = this.head, previous, index = 0;
+  remove(element) {
+    let current = this.head;
+    let previous = null;
+    
+    if(this.isEmpty()) return;
 
-    if(position > -1 && position < this.length) {
-      if(position === 0){
-        this.head = node;
-        this.head.next = current;
-      }else{
-        while(index++ < position) {//4 4
-          previous = current;
-          current = current.next;
+    if(current.element == element){
+      this.head = current.next;
+      this.length--;
+    }else{
+      while(current.next != null){
+        previous = current;
+        current = current.next;
+
+        if(current.element == element) {
+          previous.next = current.next;
+          this.length--;
+          break;
         }
-
-        previous.next = node;
-        node.next = current;
+        
       }
-
-      this.length++;
-    }else {
-      return ;
-    }
-  }
-
-  toString() {
-    let string = '', current = this.head;
-
-    for(let i=0; i < this.length; i++) {
-      string += current.element;
-      current = current.next;
     }
 
-    console.log(string);
-  }
-
-  isEmpty() {
-    return this.length === 0;
-  }
-
-  size(){
-    return this.length;
   }
 }
 
@@ -77,7 +83,9 @@ let linkedList = new LinkedList();
 linkedList.append(1);
 linkedList.append(2);
 linkedList.append(3);
-linkedList.append(4);
-linkedList.insert(1,5);
-linkedList.insert(4,6);
+linkedList.toString();
+linkedList.remove(1);
+linkedList.remove(2);
+linkedList.remove(3);
+linkedList.remove(4);
 linkedList.toString();
